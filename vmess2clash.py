@@ -1,6 +1,7 @@
 import base64
 import sys
 import yaml
+import datetime
 
 vmessLink = sys.argv[1]
 # print(vmessLink[8:])
@@ -41,6 +42,7 @@ print("after----------------------------------------")
 print(yamlObject["proxies"])
 print(yamlObject["proxy-groups"])
 
-with open("from_vmess.yaml", "w", encoding="utf-8") as file:
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+with open(f"from_vmess_{timestamp}.yaml", "w", encoding="utf-8") as file:
     yaml.dump(yamlObject, file, encoding="utf-8")
 print("Success!")
